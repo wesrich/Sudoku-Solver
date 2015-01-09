@@ -1,0 +1,6 @@
+require 'minitest'
+require_relative '../solver.rb'
+
+describe Solver do
+  
+end
