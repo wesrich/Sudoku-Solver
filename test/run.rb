@@ -8,9 +8,9 @@ describe Solver do
 
   it "solves the first puzzle" do
     num = 1
-    puzzle = File.read('../puzzles/puzzle_#{num}.sudoku')
+    puzzle = File.read("./puzzles/puzzle_#{num}.sudoku")
     solution = @solver.solve(puzzle)
-    known_solution = File.read('../solutions/puzzle_#{num}.sudoku')
+    known_solution = File.read("./solutions/puzzle_#{num}.sudoku")
 
     assert_equal known_solution, solution
   end
