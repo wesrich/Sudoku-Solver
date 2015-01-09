@@ -1,4 +1,6 @@
 require 'minitest/autorun'
+require 'minitest/pride'
+
 require_relative '../solver.rb'
 
 describe Solver do
