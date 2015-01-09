@@ -1,4 +1,4 @@
-require 'minitest'
+require 'minitest/autorun'
 require_relative '../solver.rb'
 
 describe Solver do
