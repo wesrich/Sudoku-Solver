@@ -28,4 +28,8 @@ class Solver
   def row(num)
     @board[num-1]
   end
+
+  def col(num)
+    @board.map { |row| row[num-1] }
+  end
 end
