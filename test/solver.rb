@@ -8,7 +8,7 @@ describe Solver do
       super
       @num = 1
       puzzle = File.read("./puzzles/puzzle_#{@num}.sudoku")
-      @solution = @solver.solve(puzzle)
+      @solver.send(:load_board, puzzle)
     end
 
     it "loads correct rows" do
@@ -26,8 +26,30 @@ describe Solver do
 
     it "solves the first puzzle" do
       skip "NYI"
+      solution = @solver.solve
       known_solution = File.read("./solutions/puzzle_#{@num}.sudoku")
       assert_equal known_solution, @solution
+    end
+  end
+
+  describe "Puzzle, Last Item" do
+    def setup
+      super
+      @known_solution = File.read("./solutions/puzzle_1.sudoku")
+      puzzle = @known_solution.dup
+      puzzle[0] = " "
+      @solver.send(:load_board, puzzle)
+    end
+
+    it "can identify the last square" do
+      last_spot = @solver.send(:row, 1)[0]
+      assert last_spot.empty?, "Spot isn't empty: #{last_spot}"
+
+      @solver.send(:find_possible_values)
+      assert_equal ["8"], last_spot.possible
+
+      solution = @solver.solve
+      assert_equal @known_solution, solution
     end
   end
 end

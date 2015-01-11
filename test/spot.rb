@@ -8,6 +8,10 @@ describe Spot do
       assert_equal 1, @spot
     end
 
+    it "is not empty" do
+      refute @spot.empty?
+    end
+
     it "has only one possibility" do
       assert_equal ["1"], @spot.possible
     end
@@ -20,6 +24,10 @@ describe Spot do
 
     it "does not have a value" do
       assert_equal 0, @spot
+    end
+
+    it "is empty" do
+      assert @spot.empty?
     end
 
     it "has all possibilities" do
