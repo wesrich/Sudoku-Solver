@@ -25,10 +25,10 @@ describe Solver do
     end
 
     it "solves the first puzzle" do
-      skip "NYI"
+      # skip "NYI"
       solution = @solver.solve
       known_solution = File.read("./solutions/puzzle_#{@num}.sudoku")
-      assert_equal known_solution, @solution
+      assert_equal known_solution, solution
     end
   end
 
