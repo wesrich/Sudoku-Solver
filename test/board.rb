@@ -28,4 +28,24 @@ describe Board do
     assert_equal [0,0,0,0,0,0,8,1,3], @board.send(:block, 5)
     assert_equal [9,0,2,0,7,0,3,0,5], @board.send(:block, 8)
   end
+
+  describe "Puzzle, Last Item" do
+    def setup
+      @board = Board.new
+      puzzle = File.read("./puzzles/puzzle_1.sudoku")
+      puzzle[0] = " "
+      @board.load_board(puzzle)
+      @known_solution = File.read("./solutions/puzzle_1.sudoku")
+    end
+
+    it "can identify the last square" do
+      last_spot = @board.send(:row, 1)[0]
+      assert last_spot.empty?, "Spot isn't empty: #{last_spot}"
+
+      @board.send(:find_possible_values)
+      assert_equal ["8"], last_spot.possible
+
+      assert_equal @known_solution, @board
+    end
+  end
 end

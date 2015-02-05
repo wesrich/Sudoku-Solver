@@ -18,15 +18,16 @@ class Board
     @loaded = true
   end
 
-  # def solve_one_spot
-  #   @board.each_with_index do |row, row_index|
-  #     row.each_with_index do |spot, col_index|
-  #       next unless spot.empty?
-  #       return true if spot.simple_check(row + col(col_index+1))
-  #     end
-  #   end
-  #   false
-  # end
+  def solve_one_spot
+    binding.pry
+    @board.each_with_index do |row, row_index|
+      row.each_with_index do |spot, col_index|
+        next unless spot.empty?
+        return true if spot.simple_check(row + col(col_index+1))
+      end
+    end
+    false
+  end
 
   private
 
@@ -54,7 +55,7 @@ class Board
     }
   end
 
-  # def find_possible_values
-  #   find_possible_values if solve_one_spot
-  # end
+  def find_possible_values
+    find_possible_values if solve_one_spot
+  end
 end
