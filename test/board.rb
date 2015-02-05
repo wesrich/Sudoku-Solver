@@ -1,9 +1,8 @@
 describe Board do
   def setup
-    solver = Solver.new
     puzzle = File.read("./puzzles/puzzle_1.sudoku")
-    solver.send(:load_board, puzzle)
-    @board = solver.board
+    @board = Board.new
+    @board.load_board(puzzle)
   end
 
   it "outputs the board" do
