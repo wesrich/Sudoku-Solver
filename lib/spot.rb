@@ -34,7 +34,7 @@ class Spot
     empty? && @possible.size == 1
   end
 
-  def simple_check(other_spots)
+  def update_possible(other_spots)
     other_spots.map!(&:to_s).uniq!
     @possible.delete_if { |possible| other_spots.include? possible }
     @value = @possible.first if @possible.size == 1

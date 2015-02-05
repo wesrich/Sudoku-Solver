@@ -32,7 +32,7 @@ describe Board do
   describe "Puzzle, Last Item" do
     def setup
       @board = Board.new
-      puzzle = File.read("./puzzles/puzzle_1.sudoku")
+      puzzle = File.read("./solutions/puzzle_1.sudoku")
       puzzle[0] = " "
       @board.load_board(puzzle)
       @known_solution = File.read("./solutions/puzzle_1.sudoku")
@@ -45,7 +45,7 @@ describe Board do
       @board.send(:find_possible_values)
       assert_equal ["8"], last_spot.possible
 
-      assert_equal @known_solution, @board
+      assert_equal @known_solution, @board.to_s
     end
   end
 end

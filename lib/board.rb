@@ -19,11 +19,10 @@ class Board
   end
 
   def solve_one_spot
-    binding.pry
     @board.each_with_index do |row, row_index|
       row.each_with_index do |spot, col_index|
         next unless spot.empty?
-        return true if spot.simple_check(row + col(col_index+1))
+        return true if spot.update_possible(row + col(col_index+1))
       end
     end
     false
