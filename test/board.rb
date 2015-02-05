@@ -21,4 +21,11 @@ describe Board do
     assert_equal [5,0,7,0,0,8,9,0,3], @board.send(:col, 4)
     assert_equal [4,0,1,0,0,3,2,0,5], @board.send(:col, 6)
   end
+
+  it "provides an array for blocks" do
+    assert_equal [8,0,0,0,0,5,0,9,0], @board.send(:block, 1)
+    assert_equal [5,0,4,0,3,0,7,0,1], @board.send(:block, 2)
+    assert_equal [0,0,0,0,0,0,8,1,3], @board.send(:block, 5)
+    assert_equal [9,0,2,0,7,0,3,0,5], @board.send(:block, 8)
+  end
 end

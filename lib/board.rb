@@ -4,9 +4,11 @@ class Board
     @loaded = false
   end
 
-  def board
+  def to_s
     @board.map { |line| line.join('') }.join("\n")
   end
+
+  alias_method :inspect, :to_s
 
   def load_board(input)
     return if @loaded
@@ -45,7 +47,11 @@ class Board
   end
 
   def block(num)
-
+    x = ((num-1)/3)*3
+    y = (num%3-1)*3
+    @board[x..x+2].flat_map { |row|
+      row[y..y+2]
+    }
   end
 
   # def find_possible_values
