@@ -16,7 +16,14 @@ class Solver
     board
   end
 
-  def next
+  def solve_one_spot
+    @board.each_with_index do |row, row_index|
+      row.each_with_index do |spot, col_index|
+        next unless spot.empty?
+        return true if spot.simple_check(row + col(col_index+1))
+      end
+    end
+    false
   end
 
   private
@@ -45,12 +52,11 @@ class Solver
     9.times { |num| cols(num) }
   end
 
+  def block(num)
+    
+  end
+
   def find_possible_values
-    @board.each_with_index do |row, row_index|
-      row.each_with_index do |spot, col_index|
-        next unless spot.empty?
-        spot.simple_check(row + col(col_index+1))
-      end
-    end
+    find_possible_values if solve_one_spot
   end
 end

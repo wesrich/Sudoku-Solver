@@ -38,5 +38,6 @@ class Spot
     other_spots.map!(&:to_s).uniq!
     @possible.delete_if { |possible| other_spots.include? possible }
     @value = @possible.first if @possible.size == 1
+    !self.empty?
   end
 end
