@@ -1,7 +1,4 @@
-require_relative 'spot'
-require_relative 'board'
-
-class Solver
+class Board
   def initialize
     @board = Array.new(9) { [] }
     @loaded = false
@@ -11,24 +8,6 @@ class Solver
     @board.map { |line| line.join('') }.join("\n")
   end
 
-  def solve(puzzle = nil)
-    load_board(puzzle)
-    find_possible_values
-    board
-  end
-
-  def solve_one_spot
-    @board.each_with_index do |row, row_index|
-      row.each_with_index do |spot, col_index|
-        next unless spot.empty?
-        return true if spot.simple_check(row + col(col_index+1))
-      end
-    end
-    false
-  end
-
-  private
-
   def load_board(input)
     return if @loaded
     input.split("\n").each_with_index do |line, row_index|
@@ -36,6 +15,18 @@ class Solver
     end
     @loaded = true
   end
+
+  # def solve_one_spot
+  #   @board.each_with_index do |row, row_index|
+  #     row.each_with_index do |spot, col_index|
+  #       next unless spot.empty?
+  #       return true if spot.simple_check(row + col(col_index+1))
+  #     end
+  #   end
+  #   false
+  # end
+
+  private
 
   def row(num)
     @board[num-1]
@@ -57,7 +48,7 @@ class Solver
 
   end
 
-  def find_possible_values
-    find_possible_values if solve_one_spot
-  end
+  # def find_possible_values
+  #   find_possible_values if solve_one_spot
+  # end
 end
