@@ -35,7 +35,7 @@ describe Board do
       puzzle = File.read("./solutions/puzzle_1.sudoku")
       puzzle[0] = " "
       @board.load_board(puzzle)
-      @known_solution = File.read("./solutions/puzzle_1.sudoku")
+      @known_solution = File.read("./solutions/puzzle_1.sudoku").rstrip
     end
 
     it "can identify the last square" do
