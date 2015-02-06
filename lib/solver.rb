@@ -11,6 +11,6 @@ class Solver
   def solve(puzzle = nil)
     @board.load_board(puzzle)
     @board.find_possible_values
-    @board
+    @board.to_s
   end
 end
