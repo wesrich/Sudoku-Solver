@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 
 class Spot
   attr_reader :possible
